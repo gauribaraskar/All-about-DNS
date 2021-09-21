@@ -62,7 +62,8 @@ def resolve_from_root(hostname,rdtype):
 
 '''Function to fetch records from NS'''
 def resolve_from_server(hostname,rdtype,server):
-    query = dns.message.make_query(hostname, rdtype)
+    print(hostname,rdtype,server)
+    query = dns.message.make_query(dns.name.from_text(str(hostname)), rdtype)
     try:
         response = dns.query.udp(query, server, timeout=5)
         return response
@@ -79,7 +80,7 @@ def resolve_iteratively(hostname,rdtype,response: [dns.message.Message]):
             for rr in r:
                 if(rr.rdtype==rdata_type_map[rdtype]):
                     noARecord = False
-                    records.append(rr)
+                    records.append(rr.to_text())
             if(noRecords):
                 for rr in r:
                     cnames = []
@@ -130,7 +131,7 @@ def print_like_dig(hostname,rdtype,records,metadata):
     print("\n")
     print(';;ANSWER SECTION:')
     for record in records:
-        print(hostname + "     " + "IN    " + rdtype + "    " + record.to_text())
+        print(hostname + "     " + "IN    " + rdtype + "    " + record)
     print("\n")
     print('Query time: ' + str(int(metadata.time * 1000)) + ' msec')
     print('WHEN:', datetime.datetime.now().strftime("%a %b %d %H:%M:%S %Y"))
@@ -140,11 +141,12 @@ def print_like_dig(hostname,rdtype,records,metadata):
 
 
 def main_helper(hostname,rdtype):
+    rr = None
     for server in root_servers:
         response = resolve_from_server(hostname,rdtype,server)
         if response is not None:
+            rr = resolve_iteratively(hostname,rdtype,response)
             break
-    rr = resolve_iteratively(hostname,rdtype,response)
     return rr
 
 
@@ -170,9 +172,4 @@ if __name__ == '__main__':
     domain = domain.replace("https://www.", "");
     domain = domain.replace("http://www.", "");
     domain = domain.replace("www.", "");
-    print(domain)
     main(domain,rdtype)
-
-
-
-
