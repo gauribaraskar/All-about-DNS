@@ -1,0 +1,110 @@
+
+sh dns_script.sh cnn.com	A	
+
+;;QUESTION SECTION:
+cnn.com     IN    A
+
+
+;;ANSWER SECTION:
+cnn.com     IN    A    151.101.193.67
+cnn.com     IN    A    151.101.1.67
+cnn.com     IN    A    151.101.129.67
+cnn.com     IN    A    151.101.65.67
+
+
+Query time: 65 msec
+WHEN: Wed Sep 22 14:56:08 2021
+MSG SIZE rcvd:  88 
+
+--------------------------------------------------
+
+sh dns_script.sh google.com MX
+
+;;QUESTION SECTION:
+google.com     IN    MX
+
+
+;;ANSWER SECTION:
+google.com     IN    MX    50 alt4.aspmx.l.google.com.
+google.com     IN    MX    20 alt1.aspmx.l.google.com.
+google.com     IN    MX    40 alt3.aspmx.l.google.com.
+google.com     IN    MX    30 alt2.aspmx.l.google.com.
+google.com     IN    MX    10 aspmx.l.google.com.
+
+
+Query time: 62 msec
+WHEN: Wed Sep 22 17:52:50 2021
+MSG SIZE rcvd:  120
+
+---------------------------------------------------
+
+sh dns_script.sh google.com NS
+
+;;QUESTION SECTION:
+google.com     IN    NS
+
+
+;;ANSWER SECTION:
+google.com     IN    NS    ns2.google.com.
+google.com     IN    NS    ns4.google.com.
+google.com     IN    NS    ns3.google.com.
+google.com     IN    NS    ns1.google.com.
+
+
+Query time: 92 msec
+WHEN: Wed Sep 22 17:53:41 2021
+MSG SIZE rcvd:  88
+
+----------------------------------------------------
+
+sh dns_script.sh paypal.com A
+
+;;QUESTION SECTION:
+paypal.com     IN    A
+
+
+;;ANSWER SECTION:
+paypal.com     IN    A    64.4.250.37
+paypal.com     IN    A    64.4.250.36
+
+
+Query time: 49 msec
+WHEN: Wed Sep 22 18:01:01 2021
+MSG SIZE rcvd:  88 
+
+-----------------------------------------------------
+
+sh dns_script.sh 360.cn A
+
+;;QUESTION SECTION:
+360.cn     IN    A
+
+
+;;ANSWER SECTION:
+360.cn     IN    A    36.99.170.84
+360.cn     IN    A    36.110.213.10
+
+
+Query time: 1314 msec
+WHEN: Wed Sep 22 18:04:49 2021
+MSG SIZE rcvd:  88 
+
+-----------------------------------------------------
+
+sh dns_script.sh baidu.com A
+
+;;QUESTION SECTION:
+baidu.com     IN    A
+
+
+;;ANSWER SECTION:
+baidu.com     IN    A    220.181.38.251
+baidu.com     IN    A    220.181.38.148
+
+
+Query time: 257 msec
+WHEN: Wed Sep 22 18:07:14 2021
+MSG SIZE rcvd:  88 
+
+-------------------------------------------------------
+
