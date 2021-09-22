@@ -193,5 +193,4 @@ if __name__ == '__main__':
     domain = domain.replace("https://www.", "");
     domain = domain.replace("http://www.", "");
     domain = domain.replace("www.", "");
-    print(domain)
     main(domain,rdtype)
